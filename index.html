@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>QR Code Generator</h1>
+
+    <input type="text" id="qrText" placeholder="Enter text or URL">
+
+    <button onclick="generateQR()">Generate QR</button>
+
+    <div class="qr-box">
+        <img id="qrImage" src="" alt="">
+    </div>
+</div>
+
+<script>
+function generateQR() {
+    let text = document.getElementById("qrText").value;
+
+    if (text === "") {
+        alert("Please enter text or URL");
+        return;
+    }
+
+    // This uses an API OR your backend endpoint later
+    let qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(text);
+    document.getElementById("qrImage").src = qrUrl;
+}
+</script>
+
+</body>
+</html>
